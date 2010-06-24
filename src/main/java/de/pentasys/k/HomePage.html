@@ -1,10 +1,36 @@
-<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd" >
-    <head>  
-        <title>Wicket Quickstart Archetype Homepage</title>
-    </head>
-    <body>
-        <strong>Wicket Quickstart Archetype Homepage</strong>
-        <br/><br/>
-        <span wicket:id="message">message will be here</span>
-    </body>
+<html
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<head>
+<title>PENTASYS AG - K's Video Store Application</title>
+
+</head>
+<body>
+<div id="content">
+<form wicket:id="customerForm">
+<table>
+	<tr>
+		<td>Name:</td>
+		<td colspan="2"><input type="text" wicket:id="name" /></td>
+	</tr>
+	<tr>
+		<td>Email:</td>
+		<td colspan="2"><input type="text" wicket:id="email" /></td>
+	</tr>
+	<tr>
+		<td>Strasse:</td>
+		<td><input type="text" wicket:id="street" /></td>
+		<td><input type="text" wicket:id="houseNumber" /></td>
+	</tr>
+	<tr>
+		<td>Stadt:</td>
+		<td><input type="text" wicket:id="zip" /></td>
+		<td><input type="text" wicket:id="city" /></td>
+	</tr>
+	<tr>
+		<td colspan="3"><input type="submit" wicket:id="submit"/></td>
+	</tr>
+</table>
+</form>
+</div>
+</body>
 </html>
