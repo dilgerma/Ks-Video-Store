@@ -5,8 +5,7 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.model.Model;
-import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.model.CompoundPropertyModel;
 
 import de.pentasys.k.domain.Customer;
 
@@ -15,50 +14,53 @@ import de.pentasys.k.domain.Customer;
  */
 public class HomePage extends WebPage {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	// TODO Add any page properties or variables here
+    // TODO Add any page properties or variables here
 
-	/**
-	 * Constructor that is invoked when page is invoked without a session.
-	 *
-	 * @param parameters
-	 *            Page parameters
-	 */
-	@SuppressWarnings("rawtypes")
-	public HomePage(final PageParameters parameters) {
+    /**
+     * Constructor that is invoked when page is invoked without a session.
+     *
+     * @param parameters
+     *            Page parameters
+     */
+    @SuppressWarnings("rawtypes")
+    public HomePage(final PageParameters parameters) {
 
-		final Customer customer = createNewCustomer();
+	final Customer customer = createEmptyCustomer();
 
-		Form form = new Form("customerForm");
-		form.add(new TextField<String>("name", new PropertyModel<String>(
-				customer, "name")));
-		form.add(new TextField<String>("email", new PropertyModel<String>(
-				customer, "email")));
-		form.add(new TextField<String>("street", new PropertyModel<String>(
-				customer, "adress.street")));
-		form.add(new TextField<String>("houseNumber",
-				new PropertyModel<String>(customer, "adress.houseNumber")));
-		form.add(new TextField<String>("zip", new PropertyModel<String>(
-				customer, "adress.zip")));
-		form.add(new TextField<String>("city", new PropertyModel<String>(
-				customer, "adress.city")));
-		form.add(new SubmitLink("submit") {
-			/**
+	Form form = new Form<Customer>("customerForm", new CompoundPropertyModel<Customer>(customer));
+	final TextField<String> nameField = new TextField<String>("name");
+	final TextField<String> emailField = new TextField<String>("email");
+	final TextField<String> streetField = new TextField<String>("adress.street");
+	final TextField<String> zipField = new TextField<String>("adress.zip");
+	final TextField<String> cityField = new TextField<String>("adress.city");
+	final TextField<String> houseNumberField = new TextField<String>(
+		"adress.houseNumber");
+
+	form.add(nameField);
+	form.add(emailField);
+	form.add(streetField);
+	form.add(houseNumberField);
+	form.add(zipField);
+	form.add(cityField);
+	form.add(new SubmitLink("submit") {
+	    /**
 			 *
 			 */
-			private static final long serialVersionUID = 1L;
+	    private static final long serialVersionUID = 1L;
 
-			@Override
-			public void onSubmit() {
-				((VideoSession)getSession()).setCustomer(customer);
-				System.out.println(customer);
-			}
-		});
-		add(form);
-	}
+	    @Override
+	    public void onSubmit() {
+		// store new customer in session
+		((VideoSession) getSession()).setCustomer(customer);
+	    }
+	});
+	add(form);
+    }
 
-	protected Customer createNewCustomer() {
-		return new Customer();
-	}
+    protected Customer createEmptyCustomer() {
+	Customer customer = new Customer();
+	return customer;
+    }
 }
