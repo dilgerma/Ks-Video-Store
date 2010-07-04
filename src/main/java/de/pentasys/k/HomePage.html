@@ -6,6 +6,7 @@
 </head>
 <body>
 <div id="content">
+<div wicket:id="feedback"/>
 <form wicket:id="customerForm">
 <table>
 	<tr>
@@ -16,6 +17,10 @@
 		<td>Email:</td>
 		<td colspan="2"><input type="text" wicket:id="email" /></td>
 	</tr>
+	<tr>
+        <td>Geburtstag:</td>
+        <td colspan="2"><input type="text" wicket:id="birthDay" /></td>
+    </tr>
 	<tr>
 		<td>Strasse:</td>
 		<td><input type="text" wicket:id="adress.street" /></td>
