@@ -5,8 +5,12 @@ package de.pentasys.k.validation;
 
 import org.apache.wicket.validation.IValidatable;
 import org.apache.wicket.validation.validator.AbstractValidator;
+import org.apache.wicket.validation.validator.EmailAddressValidator;
 
 /**
+ * This is a simple Demo-Implementation for a Custom Validator.
+ * @see EmailAddressValidator
+ *
  * @author <a href="mailto:martin.dilger@pentasys.de">Martin Dilger</a>
  * @since 05.07.2010
  */
