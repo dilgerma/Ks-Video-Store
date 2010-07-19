@@ -2,14 +2,24 @@
 	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
 <head>
 <title>PENTASYS AG - K's Video Store Application</title>
-
 </head>
 <body>
-<div id="content">
+<div class="headline">
+        <h1>Herr K. lernt Wicket - Ihre Online Videothek</h1>
+    </div>
+<div class="navigation">
+ <a href="#" class="naviItem">Filmauswahl</a>
+ <a href="#" class="naviItem">Bestellen</a>
+ <a href="#" class="naviItem">Kundendaten</a>
+</div>
+<div id="content" class="content">
 
 <form wicket:id="customerForm">
-<div wicket:id="feedback"/>
-<table>
+
+<table class="customerTable">
+    <tr>
+        <td colspan="3" wicket:id="feedback"/>
+    </tr>
 	<tr>
 		<td>Name:</td>
 		<td colspan="2"><input type="text" wicket:id="name" /></td>
@@ -19,8 +29,8 @@
 		<td colspan="2"><input type="text" wicket:id="email" /></td>
 	</tr>
 	<tr>
-        <td>Geburtstag:</td>
-        <td colspan="2"><input type="text" wicket:id="birthDay" /></td>
+        <td>Kundentyp:</td>
+        <td colspan="2"><span wicket:id="type"/></td>
     </tr>
 	<tr>
 		<td>Strasse:</td>

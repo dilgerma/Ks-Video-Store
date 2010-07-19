@@ -1,25 +1,74 @@
+/*
+Copyright 2010 - Martin Dilger
 
+Dieses CSS wurde für den Java Magazin Artikel "World Wide Wicket" im Juli 2010 entwickelt.
+Verwendung grundsätzlich frei und ohne Einschränkung möglich.
+*/
 
 body {
-	margin: 0;
-	background: #444;
 	font-family: arial, verdana, sans-serif;
+	background-image: url("http://localhost:8080/video/images/bg.gif");
+	background-repeat: repeat;
+	background-color: black;
 }
+
 .content {
-	position: absolute;
-	left: 50%;
-	top: 0;
-	right: auto;
-	bottom: auto;
-	margin-left: -390px;
-	width: 780px;
-	clear: both;
-	background: #F5E783 url(images/linklist_back.jpg) repeat-y 100% 0;
 	border-left: solid 1px #fff;
 	border-right: solid 1px #fff;
 }
 
-.feedBackPanelERROR {font-family: arial, verdana, sans-serif; color:red;}
-.customerTable { background: #aa3433; position: relative; left:100; border: 3px solid black; width: 120px;}
-.feedbackPanel {background: #b1b2b3 ; position: relative; left: 100; border: 3px solid black; width: 120px;}
+h1 {
+	font-damily: verdana;
+	font-size: 14pt;
+	color: black;
+	position: absolute;
+	top: 5px;
+	width: 150px;
+	margin-left: 70%;
+	z-index: 5;
+}
 
+.navigation {
+	position: absolute;
+	margin-left: 15px;
+	margin-right: 15px;
+	background: #cccccc;
+	height: 50px;
+	position: relative;
+}
+
+.feedBackPanelERROR {
+	font-family: verdana;
+	color: red;
+}
+
+.customerTable {
+	height : 250px; position : relative;
+	left: 100;
+	border: 3px solid black;
+	width: 120px;
+	background: #aaaaaa;
+	position: relative;
+	height: 250px;
+	position: fixed;
+    left: 250px;
+    top: 150px;
+    padding: 15px;
+}
+
+.feedbackPanel {
+	background: #b1b2b3;
+	position: relative;
+	border: 1px solid black;
+}
+
+a {
+	font-family: verdana;
+	text-decoration: none;
+}
+
+.naviItem {
+	width: 50px;
+	background: #bbbbbb;
+	padding: 5px;
+}

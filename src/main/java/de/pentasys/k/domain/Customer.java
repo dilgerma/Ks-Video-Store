@@ -1,7 +1,6 @@
 package de.pentasys.k.domain;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  *
@@ -20,16 +19,16 @@ public class Customer implements Serializable {
 	private String name;
 	private Adress adress;
 	private String email;
-	private Date birthDay;
+	private CustomerType type;
 
 	public Customer(){
-		adress = new Adress();
 	}
 
-	public Customer(String name, String email, Date birthDate, Adress adress) {
+	public Customer(String name, String email, CustomerType type, Adress adress) {
 		this.email = email;
 		this.name = name;
 		this.adress = adress;
+		this.type = type;
 	}
 
 	public String getName() {
@@ -56,12 +55,14 @@ public class Customer implements Serializable {
 		this.email = email;
 	}
 
-	public Date getBirthDay() {
-	    return birthDay;
+
+
+	public CustomerType getType() {
+	    return type;
 	}
 
-	public void setBirthDay(Date birthDate) {
-	    this.birthDay = birthDate;
+	public void setType(CustomerType type) {
+	    this.type = type;
 	}
 
 	@Override
@@ -70,10 +71,9 @@ public class Customer implements Serializable {
 	    int result = 1;
 	    result = prime * result
 		    + ((adress == null) ? 0 : adress.hashCode());
-	    result = prime * result
-		    + ((birthDay == null) ? 0 : birthDay.hashCode());
 	    result = prime * result + ((email == null) ? 0 : email.hashCode());
 	    result = prime * result + ((name == null) ? 0 : name.hashCode());
+	    result = prime * result + ((type == null) ? 0 : type.hashCode());
 	    return result;
 	}
 
@@ -91,11 +91,6 @@ public class Customer implements Serializable {
 		    return false;
 	    } else if (!adress.equals(other.adress))
 		return false;
-	    if (birthDay == null) {
-		if (other.birthDay != null)
-		    return false;
-	    } else if (!birthDay.equals(other.birthDay))
-		return false;
 	    if (email == null) {
 		if (other.email != null)
 		    return false;
@@ -106,16 +101,16 @@ public class Customer implements Serializable {
 		    return false;
 	    } else if (!name.equals(other.name))
 		return false;
+	    if (type != other.type)
+		return false;
 	    return true;
 	}
 
 	@Override
 	public String toString() {
 	    return "Customer [name=" + name + ", adress=" + adress + ", email="
-		    + email + ", birthDate=" + birthDay + "]";
+		    + email + ", type=" + type + "]";
 	}
-
-
 
 
 }
