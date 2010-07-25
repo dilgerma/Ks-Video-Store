@@ -4,6 +4,7 @@ import org.apache.wicket.Request;
 import org.apache.wicket.Response;
 import org.apache.wicket.Session;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 
 /***
  * Application.
@@ -32,5 +33,14 @@ public class VideoStoreApplication extends WebApplication
 	@Override
 	public Session newSession(Request request, Response response) {
 		return new VideoSession(request);
+	}
+
+	/* (non-Javadoc)
+	 * @see org.apache.wicket.protocol.http.WebApplication#init()
+	 */
+	@Override
+	protected void init() {
+	    super.init();
+	    addComponentInstantiationListener(new SpringComponentInjector(this));
 	}
 }
