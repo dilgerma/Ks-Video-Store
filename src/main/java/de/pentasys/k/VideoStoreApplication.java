@@ -6,6 +6,8 @@ import org.apache.wicket.Session;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 
+import de.pentasys.k.pages.HomePage;
+
 /***
  * Application.
  *

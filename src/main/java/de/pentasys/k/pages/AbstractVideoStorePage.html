@@ -7,10 +7,10 @@
 <div class="headline">
         <h1>Herr K. lernt Wicket - Ihre Online Videothek</h1>
     </div>
-<div class="navigation" wicket:id="navigation">
- <a href="#" class="naviItem">Filmauswahl</a>
- <a href="#" class="naviItem">Bestellen</a>
- <a href="#" class="naviItem">Kundendaten</a>
+<div class="navigation">
+    <wicket:container wicket:id="navigationList">
+        <a href="#" class="naviItem" wicket:id="entry"><span wicket:id="title">Filmauswahl</span></a>
+    </wicket:container>
 </div>
 <div id="content" class="content">
 <wicket:child/>

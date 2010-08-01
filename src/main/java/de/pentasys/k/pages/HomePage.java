@@ -1,10 +1,9 @@
-package de.pentasys.k;
+package de.pentasys.k.pages;
 
 import java.util.Arrays;
 
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.markup.html.CSSPackageResource;
-import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.EnumChoiceRenderer;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.RadioChoice;
@@ -13,6 +12,7 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 
+import de.pentasys.k.VideoSession;
 import de.pentasys.k.domain.Customer;
 import de.pentasys.k.domain.CustomerType;
 import de.pentasys.k.validation.EmailValidator;
@@ -22,7 +22,7 @@ import de.pentasys.k.validation.EmailValidator;
  * @author <a href="mailto:martin.dilger@pentasys.de">Martin Dilger</a>
  * @since 04.07.2010
  */
-public class HomePage extends WebPage {
+public class HomePage extends AbstractVideoStorePage {
 
     private static final long serialVersionUID = 1L;
 
@@ -36,8 +36,6 @@ public class HomePage extends WebPage {
     public HomePage(final PageParameters parameters) {
 
 	final Customer customer = createEmptyCustomer();
-
-	initHeaderContributions();
 
 	Form form = new Form<Customer>("customerForm",
 		new CompoundPropertyModel<Customer>(customer));
@@ -82,13 +80,11 @@ public class HomePage extends WebPage {
 	add(form);
     }
 
+
+
     protected Customer createEmptyCustomer() {
 	Customer customer = new Customer();
 	return customer;
     }
 
-
-    protected void initHeaderContributions(){
-	add(CSSPackageResource.getHeaderContribution(HomePage.class, "style.css"));
-    }
 }

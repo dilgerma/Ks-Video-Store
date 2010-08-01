@@ -4,15 +4,8 @@
 <title>PENTASYS AG - K's Video Store Application</title>
 </head>
 <body>
-<div class="headline">
-        <h1>Herr K. lernt Wicket - Ihre Online Videothek</h1>
-    </div>
-<div class="navigation">
- <a href="#" class="naviItem">Filmauswahl</a>
- <a href="#" class="naviItem">Bestellen</a>
- <a href="#" class="naviItem">Kundendaten</a>
-</div>
-<div id="content" class="content">
+<!-- extends Abstract Page class -->
+<wicket:extend>
 
 <form wicket:id="customerForm">
 
@@ -47,6 +40,7 @@
 	</tr>
 </table>
 </form>
-</div>
+</wicket:extend>
+
 </body>
 </html>
