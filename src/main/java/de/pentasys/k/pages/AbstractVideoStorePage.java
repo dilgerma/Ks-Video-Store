@@ -63,7 +63,7 @@ public abstract class AbstractVideoStorePage extends WebPage {
      */
     protected List<MenuEntry> getMenuEntries() {
 	List<MenuEntry> entries = new ArrayList<MenuEntry>();
-	entries.add(new MenuEntry(HomePage.class, "Filmauswahl"));
+	entries.add(new MenuEntry(SelectMoviePage.class, "Filmauswahl"));
 	entries.add(new MenuEntry(HomePage.class, "Bestellen"));
 	entries.add(new MenuEntry(HomePage.class, "Bestätigung"));
 	return entries;
