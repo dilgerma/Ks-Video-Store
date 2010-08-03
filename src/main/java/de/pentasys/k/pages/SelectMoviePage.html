@@ -1,0 +1,27 @@
+<html
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<head>
+<title>PENTASYS AG - K's Video Store Application</title>
+</head>
+<body>
+<!-- extends Abstract Page class -->
+<wicket:extend>
+    <form wicket:id="movieForm">
+    <table class="movieTable">
+         <wicket:container wicket:id="movieList">
+            <tr>
+                <td wicket:id="title"/>
+                <td>
+                    <wicket:container wicket:id="actors">
+                        <div wicket:id="name"></div>
+                    </wicket:container>
+                </td>
+                <td wicket:id="prizePerDay"/>
+            </tr>
+         </wicket:container>
+         </table>
+    </form>
+
+</wicket:extend>
+</body>
+</html>
