@@ -12,7 +12,14 @@
 			<param-name>applicationClassName</param-name>
 			<param-value>de.pentasys.k.VideoStoreApplication</param-value>
 		</init-param>
+    <init-param>
+            <param-name>configuration</param-name>
+            <param-value>deployment</param-value>
+</init-param>
 	</filter>
+
+
+
 
 	<filter-mapping>
 		<filter-name>pentasys.video</filter-name>
