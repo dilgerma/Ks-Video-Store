@@ -1,8 +1,9 @@
 package de.pentasys.k;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-import org.apache.wicket.Application;
 import org.apache.wicket.Request;
 import org.apache.wicket.Session;
 import org.apache.wicket.protocol.http.WebSession;
@@ -29,7 +30,7 @@ public class VideoSession extends WebSession{
 	}
 
 	private Customer customer;
-	private List<Movie> selectedMovies;
+	private Set<Movie> selectedMovies = new HashSet<Movie>();
 
 
 	public Customer getCustomer() {
@@ -38,10 +39,10 @@ public class VideoSession extends WebSession{
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-	public List<Movie> getSelectedMovies() {
+	public Set<Movie> getSelectedMovies() {
 		return selectedMovies;
 	}
-	public void setSelectedMovies(List<Movie> selectedMovies) {
+	public void setSelectedMovies(Set<Movie> selectedMovies) {
 		this.selectedMovies = selectedMovies;
 	}
 
