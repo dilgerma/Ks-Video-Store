@@ -28,7 +28,7 @@ public class VideoStoreFacadeImpl implements VideoStoreFacade {
      * @see de.pentasys.k.domain.VideoStoreFacade#getMovies()
      */
     public List<Movie> getMovies() {
-	return null;
+	return movieList;
     }
 
     /*
@@ -73,9 +73,9 @@ public class VideoStoreFacadeImpl implements VideoStoreFacade {
 	 * King of Queens - Season 1
 	 */
 	List<Actor> koqActors = new ArrayList<Actor>();
-	speedActors.add(new Actor("Kevin ...", new Date(), 4));
-	speedActors.add(new Actor("...", new Date(), 3));
-	speedActors.add(new Actor("... Stiller", new Date(), 2));
+	koqActors.add(new Actor("Kevin James", new Date(), 4));
+	koqActors.add(new Actor("Leah Remini", new Date(), 3));
+	koqActors.add(new Actor("Jerry Stiller", new Date(), 2));
 	Movie koq = new Movie("King of Queens Season 1", koqActors, new Date(),
 		5.0);
 
