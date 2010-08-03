@@ -4,7 +4,6 @@ Copyright 2010 - Martin Dilger
 Dieses CSS wurde für den Java Magazin Artikel "World Wide Wicket" im Juli 2010 entwickelt.
 Verwendung grundsätzlich frei und ohne Einschränkung möglich.
 */
-
 body {
 	font-family: arial, verdana, sans-serif;
 	background-image: url("http://localhost:8080/video/images/bg.gif");
@@ -43,14 +42,14 @@ h1 {
 }
 
 .customerTable {
-	height : 250px;
+	height: 250px;
 	left: 100;
 	border: 3px solid black;
 	width: 120px;
 	background: #aaaaaa;
 	position: relative;
 	top: 50px;
-    padding: 15px;
+	padding: 15px;
 }
 
 .feedbackPanel {
@@ -72,10 +71,36 @@ a {
 
 .movieTable {
 	left: 100px;
-	top: 50px;
-    width: 800px;
-    position: relative;
-    background: #aaaaaa;
-    border-left: 2px solid;
-    border-right: 2px solid;
+	top: 100px;
+	width: 800px;
+	position: relative;
+	background: #aaaaaa;
+	border-bottom: 2px solid;
+	padding: 5px;
+	}
+
+.headers{
+	background: #cccccc;
+}
+
+.headers#a{
+    font-family: times new roman
+}
+
+.movieColumnBig {
+	width: 250px;
+	text-align: center;
+	border-bottom: 1px solid;
+}
+
+.movieColumnMedium {
+	width: 150px;
+	text-align: center;
+	border-bottom: 1px solid;
+}
+
+.movieColumnSmall {
+	width: 75px;
+	text-align: center;
+	border-bottom: 1px solid;
 }

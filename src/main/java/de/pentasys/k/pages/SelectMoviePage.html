@@ -6,27 +6,22 @@
 <body>
 <!-- extends Abstract Page class -->
 <wicket:extend>
-    <form wicket:id="movieForm">
-    <table class="movieTable">
-         <wicket:container wicket:id="movieList">
-            <tr>
-                <td wicket:id="title"/>
-                <td>
-                    <wicket:container wicket:id="actors">
-                        <div wicket:id="name"></div>
-                    </wicket:container>
-                </td>
-                <td>
-                    <span wicket:id="prizePerDay"/> € / Tag
-                </td>
-                <td>
-                    <a href="#" wicket:id="order"><span wicket:id="orderLink"/></a>
-                </td>
-            </tr>
-         </wicket:container>
-         </table>
-    </form>
+	<form wicket:id="movieForm">
+	<table wicket:id="movieTable" class="movieTable"/>
+	</form>
+	<!-- Fragment to add a Link to DataTable -->
+	<wicket:fragment wicket:id="linkFragment">
+		<a href="#" wicket:id="order"> <span wicket:id="title">Bestellen</span></a>
+	</wicket:fragment>
+	<!-- Fragment to add a ListView to DataTable -->
+	<wicket:fragment wicket:id="actorsListFragment">
+	   <wicket:container wicket:id="actorsList">
+	       <div wicket:id="name"/>
+	   </wicket:container>
+	</wicket:fragment>
 
 </wicket:extend>
 </body>
+
+
 </html>
