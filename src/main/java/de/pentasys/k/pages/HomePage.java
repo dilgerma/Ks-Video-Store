@@ -35,7 +35,7 @@ public class HomePage extends AbstractVideoStorePage {
     @SuppressWarnings("rawtypes")
     public HomePage(final PageParameters parameters) {
 
-	final Customer customer = createEmptyCustomer();
+	final Customer customer = createOrLoadCustomer();
 
 	Form form = new Form<Customer>("customerForm",
 		new CompoundPropertyModel<Customer>(customer));
@@ -75,6 +75,7 @@ public class HomePage extends AbstractVideoStorePage {
 	    public void onSubmit() {
 		// store new customer in session
 		((VideoSession) getSession()).setCustomer(customer);
+		setResponsePage(SelectMoviePage.class);
 	    }
 	});
 	add(form);
@@ -82,8 +83,11 @@ public class HomePage extends AbstractVideoStorePage {
 
 
 
-    protected Customer createEmptyCustomer() {
-	Customer customer = new Customer();
+    protected Customer createOrLoadCustomer() {
+	Customer customer = VideoSession.get().getCustomer();
+	if(customer == null){
+	    customer = new Customer();
+	}
 	return customer;
     }
 

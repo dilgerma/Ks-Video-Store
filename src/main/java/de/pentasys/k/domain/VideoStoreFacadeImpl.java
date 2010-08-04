@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 /**
  * @author <a href="mailto:martin.dilger@pentasys.de">Martin Dilger</a>
@@ -38,7 +39,12 @@ public class VideoStoreFacadeImpl implements VideoStoreFacade {
      * de.pentasys.k.domain.VideoStoreFacade#submitOrder(de.pentasys.k.domain
      * .Customer, java.util.List)
      */
-    public void submitOrder(Customer customer, List<Movie> movies) {
+    public void submitOrder(Customer customer, Set<Movie> movies) throws SubmitOrderFailedException {
+	if(movies.size() == 0)
+	    throw new SubmitOrderFailedException("Filmliste darf nicht leer sein");
+
+	//do some backend access.
+
     }
 
     /*

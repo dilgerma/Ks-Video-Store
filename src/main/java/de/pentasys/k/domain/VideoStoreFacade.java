@@ -18,7 +18,7 @@ public interface VideoStoreFacade {
 
     public List<Movie> getMovies();
 
-    public void submitOrder(Customer customer, List<Movie> movies) throws SubmitOrderFailedException;
+    public void submitOrder(Customer customer, Set<Movie> movies) throws SubmitOrderFailedException;
 
     public Movie getDailyOffer();
 

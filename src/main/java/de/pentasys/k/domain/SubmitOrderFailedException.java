@@ -17,4 +17,8 @@ public class SubmitOrderFailedException extends Exception {
     public SubmitOrderFailedException(String message, Throwable t){
 	super(message, t);
     }
+
+    public SubmitOrderFailedException(String message){
+	super(message);
+    }
 }

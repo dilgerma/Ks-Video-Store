@@ -11,6 +11,7 @@ import java.util.Set;
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
 import org.apache.wicket.extensions.markup.html.repeater.data.grid.ICellPopulator;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.DataTable;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.HeaderlessColumn;
@@ -19,8 +20,10 @@ import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.PropertyColumn;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.PropertyListView;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Fragment;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.model.IModel;
@@ -30,16 +33,19 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import de.pentasys.k.VideoSession;
 import de.pentasys.k.domain.Actor;
 import de.pentasys.k.domain.Movie;
+import de.pentasys.k.domain.SubmitOrderFailedException;
 import de.pentasys.k.domain.VideoStoreFacade;
 
 /**
  * @author <a href="mailto:martin.dilger@pentasys.de">Martin Dilger</a>
- * @since 03.08.2010
+ * @since 05.08.2010
  */
 public class SelectMoviePage extends AbstractVideoStorePage {
 
     @SpringBean(name = "videoFacade")
     private VideoStoreFacade videoFacade;
+
+    private FeedbackPanel feedbackPanel;
 
     public SelectMoviePage() {
 
@@ -47,12 +53,29 @@ public class SelectMoviePage extends AbstractVideoStorePage {
 
 	Form<List<? extends Movie>> form = new Form<List<? extends Movie>>(
 		"movieForm", Model.ofList(videoFacade.getMovies()));
-
+	form.add(feedbackPanel = new FeedbackPanel("feedback"));
+	feedbackPanel.setOutputMarkupId(true);
 
 	DataTable<Movie> dataTable = new DataTable<Movie>("movieTable",createMovieColumnList(),movieDataProvider,5);
 	dataTable.setTableBodyCss("movieTable");
 	dataTable.addTopToolbar(new HeadersToolbar(dataTable, movieDataProvider));
 	form.add(dataTable);
+	form.add(new AjaxSubmitLink("submit"){
+
+	    @Override
+	    protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
+		try {
+		    videoFacade.submitOrder(VideoSession.get().getCustomer(), VideoSession.get().getSelectedMovies());
+		} catch (SubmitOrderFailedException e) {
+		    error(e.getMessage());
+		    target.addComponent(feedbackPanel);
+		    return;
+		}
+		setResponsePage(ConfirmationPage.class);
+	    }
+
+	});
+
 	add(form);
     }
 

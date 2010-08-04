@@ -22,7 +22,7 @@ import de.pentasys.k.domain.VideoStoreFacade;
 
 /**
  * @author <a href="mailto:martin.dilger@pentasys.de">Martin Dilger</a>
- * @since 03.08.2010
+ * @since 05.08.2010
  */
 public class MovieDataProvider extends SortableDataProvider<Movie>{
 

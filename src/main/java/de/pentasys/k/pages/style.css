@@ -42,14 +42,21 @@ h1 {
 }
 
 .customerTable {
-	height: 250px;
-	left: 100;
 	border: 3px solid black;
-	width: 120px;
+	width: 100%;
 	background: #aaaaaa;
 	position: relative;
-	top: 50px;
-	padding: 15px;
+}
+
+.content {
+    left: 50px;
+    top: 50px;
+    background: #aaaaaa;
+    height: 350px;
+    width: 800px;
+    position: relative;
+    font-family: verdana;
+    color: white;
 }
 
 .feedbackPanel {
@@ -69,22 +76,27 @@ a {
 	padding: 5px;
 }
 
-.movieTable {
-	left: 100px;
+.submit {
+	position: relative;
+    float:right;
+}
+
+.movieSelectionContainer {
+	left: 350px;
 	top: 100px;
 	width: 800px;
+}
+
+.movieTable {
+	width: 100%;
 	position: relative;
 	background: #aaaaaa;
 	border-bottom: 2px solid;
 	padding: 5px;
-	}
-
-.headers{
-	background: #cccccc;
 }
 
-.headers#a{
-    font-family: times new roman
+.headers {
+	background: #cccccc;
 }
 
 .movieColumnBig {

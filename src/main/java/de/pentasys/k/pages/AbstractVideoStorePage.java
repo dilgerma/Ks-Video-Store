@@ -46,6 +46,14 @@ public abstract class AbstractVideoStorePage extends WebPage {
 			.getDisplayName()));
 		item.add(entryLink);
 	    }
+
+	    /* (non-Javadoc)
+	     * @see org.apache.wicket.Component#isVisible()
+	     */
+	    @Override
+	    public boolean isVisible() {
+		return VideoSession.get().getCustomer() != null;
+	    }
 	});
     }
 
@@ -63,9 +71,8 @@ public abstract class AbstractVideoStorePage extends WebPage {
      */
     protected List<MenuEntry> getMenuEntries() {
 	List<MenuEntry> entries = new ArrayList<MenuEntry>();
+	entries.add(new MenuEntry(HomePage.class, "Registrierung"));
 	entries.add(new MenuEntry(SelectMoviePage.class, "Filmauswahl"));
-	entries.add(new MenuEntry(HomePage.class, "Bestellen"));
-	entries.add(new MenuEntry(HomePage.class, "Bestätigung"));
 	return entries;
     }
 

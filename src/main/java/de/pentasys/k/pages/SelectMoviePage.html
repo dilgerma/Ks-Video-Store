@@ -6,8 +6,13 @@
 <body>
 <!-- extends Abstract Page class -->
 <wicket:extend>
-	<form wicket:id="movieForm">
-	<table wicket:id="movieTable" class="movieTable"/>
+		<form wicket:id="movieForm">
+	<div class="movieSelectionContainer">
+	<div wicket:id="feedback" />'
+
+	<table wicket:id="movieTable" class="movieTable" />
+	<a href="#" wicket:id="submit" class="submit">Bestellung abschicken</a>
+	</div>
 	</form>
 	<!-- Fragment to add a Link to DataTable -->
 	<wicket:fragment wicket:id="linkFragment">
@@ -15,9 +20,9 @@
 	</wicket:fragment>
 	<!-- Fragment to add a ListView to DataTable -->
 	<wicket:fragment wicket:id="actorsListFragment">
-	   <wicket:container wicket:id="actorsList">
-	       <div wicket:id="name"/>
-	   </wicket:container>
+		<wicket:container wicket:id="actorsList">
+			<div wicket:id="name" />
+		</wicket:container>
 	</wicket:fragment>
 
 </wicket:extend>
