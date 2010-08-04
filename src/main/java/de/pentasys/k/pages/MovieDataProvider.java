@@ -3,7 +3,6 @@
  */
 package de.pentasys.k.pages;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -24,7 +23,7 @@ import de.pentasys.k.domain.VideoStoreFacade;
  * @author <a href="mailto:martin.dilger@pentasys.de">Martin Dilger</a>
  * @since 05.08.2010
  */
-public class MovieDataProvider extends SortableDataProvider<Movie>{
+public class MovieDataProvider extends SortableDataProvider<Movie> {
 
     /**
      * Serial Version UID
@@ -39,7 +38,7 @@ public class MovieDataProvider extends SortableDataProvider<Movie>{
     public MovieDataProvider() {
 	InjectorHolder.getInjector().inject(this);
 	movieList = facade.getMovies();
-	setSort(new SortParam("title",true));
+	setSort(new SortParam("title", true));
     }
 
     /*
@@ -73,27 +72,33 @@ public class MovieDataProvider extends SortableDataProvider<Movie>{
 	return Model.of(movie);
     }
 
+    @SuppressWarnings("rawtypes")
     private class PropertyAwareComparator implements Comparator<Movie> {
 
 	private SortParam param;
 
-	public PropertyAwareComparator(SortParam param){
+	public PropertyAwareComparator(SortParam param) {
 	    this.param = param;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 *
 	 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
 	 */
+	@SuppressWarnings("unchecked")
 	public int compare(Movie o1, Movie o2) {
 	    boolean ascending = param.isAscending();
 	    String property = param.getProperty();
 
-	    PropertyModel<Comparable> m1 = new PropertyModel<Comparable>(o1, property);
-	    PropertyModel<Comparable> m2 = new PropertyModel<Comparable>(o2, property);
+	    PropertyModel<Comparable> m1 = new PropertyModel<Comparable>(o1,
+		    property);
+	    PropertyModel<Comparable> m2 = new PropertyModel<Comparable>(o2,
+		    property);
 
 	    int result = m1.getObject().compareTo(m2.getObject());
-	    if(!ascending)
-		result*=-1;
+	    if (!ascending)
+		result *= -1;
 	    return result;
 
 	}

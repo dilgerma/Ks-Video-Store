@@ -21,27 +21,26 @@ public class MenuEntry implements Serializable {
     private Class<? extends WebPage> targetPage;
     private String displayName;
 
-    public MenuEntry(Class<? extends WebPage> targetPage,
-	    String displayName) {
+    public MenuEntry(Class<? extends WebPage> targetPage, String displayName) {
 	super();
 	this.targetPage = targetPage;
 	this.displayName = displayName;
     }
 
     public Class<? extends WebPage> getTargetPage() {
-        return targetPage;
+	return targetPage;
     }
 
     public void setTargetPage(Class<? extends WebPage> targetPage) {
-        this.targetPage = targetPage;
+	this.targetPage = targetPage;
     }
 
     public String getDisplayName() {
-        return displayName;
+	return displayName;
     }
 
     public void setDisplayName(String displayName) {
-        this.displayName = displayName;
+	this.displayName = displayName;
     }
 
 }

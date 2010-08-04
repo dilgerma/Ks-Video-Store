@@ -3,7 +3,6 @@ package de.pentasys.k.pages;
 import java.util.Arrays;
 
 import org.apache.wicket.PageParameters;
-import org.apache.wicket.markup.html.CSSPackageResource;
 import org.apache.wicket.markup.html.form.EnumChoiceRenderer;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.RadioChoice;
@@ -39,19 +38,26 @@ public class HomePage extends AbstractVideoStorePage {
 
 	Form form = new Form<Customer>("customerForm",
 		new CompoundPropertyModel<Customer>(customer));
+
 	final TextField<String> nameField = new TextField<String>("name");
 	nameField.setRequired(true);
+
 	final TextField<String> emailField = new TextField<String>("email");
 	emailField.setRequired(true);
 	emailField.add(new EmailValidator());
+
 	final RadioChoice<CustomerType> customerTypeChoice = new RadioChoice<CustomerType>(
 		"type", Arrays.asList(CustomerType.values()),
 		new EnumChoiceRenderer<CustomerType>());
 	customerTypeChoice.setRequired(true);
+
 	final TextField<String> streetField = new TextField<String>(
 		"adress.street");
+
 	final TextField<String> zipField = new TextField<String>("adress.zip");
+
 	final TextField<String> cityField = new TextField<String>("adress.city");
+
 	final TextField<String> houseNumberField = new TextField<String>(
 		"adress.houseNumber");
 

@@ -49,24 +49,37 @@ public class SelectMoviePage extends AbstractVideoStorePage {
 
     public SelectMoviePage() {
 
-	MovieDataProvider movieDataProvider =  new MovieDataProvider();
+	MovieDataProvider movieDataProvider = new MovieDataProvider();
 
 	Form<List<? extends Movie>> form = new Form<List<? extends Movie>>(
 		"movieForm", Model.ofList(videoFacade.getMovies()));
+
 	form.add(feedbackPanel = new FeedbackPanel("feedback"));
 	feedbackPanel.setOutputMarkupId(true);
 
-	DataTable<Movie> dataTable = new DataTable<Movie>("movieTable",createMovieColumnList(),movieDataProvider,5);
+	DataTable<Movie> dataTable = new DataTable<Movie>("movieTable",
+		createMovieColumnList(), movieDataProvider, 5);
 	dataTable.setTableBodyCss("movieTable");
-	dataTable.addTopToolbar(new HeadersToolbar(dataTable, movieDataProvider));
+	dataTable
+		.addTopToolbar(new HeadersToolbar(dataTable, movieDataProvider));
 	form.add(dataTable);
-	form.add(new AjaxSubmitLink("submit"){
+	form.add(new AjaxSubmitLink("submit") {
+
+	    /**
+	     * Serial Version UID
+	     */
+	    private static final long serialVersionUID = 1L;
 
 	    @Override
 	    protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
 		try {
-		    videoFacade.submitOrder(VideoSession.get().getCustomer(), VideoSession.get().getSelectedMovies());
+		    videoFacade.submitOrder(VideoSession.get().getCustomer(),
+			    VideoSession.get().getSelectedMovies());
 		} catch (SubmitOrderFailedException e) {
+		    /*
+		     * If an Exception occurs, just show the Error-Message
+		     * and stay in the Page.
+		     * */
 		    error(e.getMessage());
 		    target.addComponent(feedbackPanel);
 		    return;
@@ -85,75 +98,103 @@ public class SelectMoviePage extends AbstractVideoStorePage {
     @SuppressWarnings("unchecked")
     private IColumn<Movie>[] createMovieColumnList() {
 	List<IColumn<Movie>> columnList = new ArrayList<IColumn<Movie>>();
-	IColumn<Movie> titleColumn = new PropertyColumn<Movie>(new Model<String>("Titel"),"title","title"){
+	IColumn<Movie> titleColumn = new PropertyColumn<Movie>(
+		new Model<String>("Titel"), "title", "title") {
 	    /**
-	     *
+	     * Serial Version UID
 	     */
 	    private static final long serialVersionUID = 1L;
 
-	    /* (non-Javadoc)
-	     * @see org.apache.wicket.extensions.markup.html.repeater.data.table.AbstractColumn#getCssClass()
+	    /*
+	     * (non-Javadoc)
+	     *
+	     * @see
+	     * org.apache.wicket.extensions.markup.html.repeater.data.table.
+	     * AbstractColumn#getCssClass()
 	     */
 	    @Override
 	    public String getCssClass() {
-	        return "movieColumnBig";
+		return "movieColumnBig";
 	    }
 	};
-	IColumn<Movie> actorsColumn = new PropertyColumn<Movie>(new Model<String>("Schauspieler"),"actors"){
+	IColumn<Movie> actorsColumn = new PropertyColumn<Movie>(
+		new Model<String>("Schauspieler"), "actors") {
 	    /**
-	     *
+	     * Serial Version UID
 	     */
 	    private static final long serialVersionUID = 1L;
 
-	    /* (non-Javadoc)
-	     * @see org.apache.wicket.extensions.markup.html.repeater.data.table.PropertyColumn#populateItem(org.apache.wicket.markup.repeater.Item, java.lang.String, org.apache.wicket.model.IModel)
+	    /*
+	     * (non-Javadoc)
+	     *
+	     * @see
+	     * org.apache.wicket.extensions.markup.html.repeater.data.table.
+	     * PropertyColumn
+	     * #populateItem(org.apache.wicket.markup.repeater.Item,
+	     * java.lang.String, org.apache.wicket.model.IModel)
 	     */
 	    @Override
 	    public void populateItem(Item<ICellPopulator<Movie>> item,
-	            String componentId, IModel<Movie> rowModel) {
-		item.add(new ActorsFragment(componentId,SelectMoviePage.this, new Model((Serializable)rowModel.getObject().getActors())));
+		    String componentId, IModel<Movie> rowModel) {
+		item.add(new ActorsFragment(componentId, SelectMoviePage.this,
+			new Model((Serializable) rowModel.getObject()
+				.getActors())));
 	    }
 
-	    /* (non-Javadoc)
-	     * @see org.apache.wicket.extensions.markup.html.repeater.data.table.AbstractColumn#getCssClass()
+	    /*
+	     * (non-Javadoc)
+	     *
+	     * @see
+	     * org.apache.wicket.extensions.markup.html.repeater.data.table.
+	     * AbstractColumn#getCssClass()
 	     */
 	    @Override
 	    public String getCssClass() {
-	        return "movieColumnMedium";
+		return "movieColumnMedium";
 	    }
 	};
-	IColumn<Movie> prizeColumn = new PropertyColumn<Movie>(new Model<String>("Preis / Tag"), "prizePerDay", "prizePerDay"){
+	IColumn<Movie> prizeColumn = new PropertyColumn<Movie>(
+		new Model<String>("Preis / Tag"), "prizePerDay", "prizePerDay") {
 	    /**
-	     *
+	     * Serial Version UID
 	     */
 	    private static final long serialVersionUID = 1L;
 
-	    /* (non-Javadoc)
-	     * @see org.apache.wicket.extensions.markup.html.repeater.data.table.AbstractColumn#getCssClass()
+	    /*
+	     * (non-Javadoc)
+	     *
+	     * @see
+	     * org.apache.wicket.extensions.markup.html.repeater.data.table.
+	     * AbstractColumn#getCssClass()
 	     */
 	    @Override
 	    public String getCssClass() {
-	        return "movieColumnSmall";
+		return "movieColumnSmall";
 	    }
 	};
 	IColumn<Movie> submitColumn = new HeaderlessColumn<Movie>() {
 
 	    /**
-	     *
+	     * Serial Version UID
 	     */
 	    private static final long serialVersionUID = 1L;
 
 	    public void populateItem(Item<ICellPopulator<Movie>> cellItem,
 		    String componentId, IModel<Movie> rowModel) {
-		cellItem.add(new LinkFragment(componentId,SelectMoviePage.this, rowModel));
+		cellItem.add(new LinkFragment(componentId,
+			SelectMoviePage.this, rowModel));
 	    }
 
-	    /* (non-Javadoc)
-	     * @see org.apache.wicket.extensions.markup.html.repeater.data.table.AbstractColumn#getCssClass()
+	    /*
+	     * (non-Javadoc)
+	     *
+	     * @see
+	     * org.apache.wicket.extensions.markup.html.repeater.data.table.
+	     * AbstractColumn#getCssClass()
 	     */
 	    @Override
 	    public String getCssClass() {
-	        return "movieColumnSmall";
+		return "movieColumnSmall";
 	    }
 
 	};
@@ -167,16 +208,20 @@ public class SelectMoviePage extends AbstractVideoStorePage {
     }
 
     private static class ActorsFragment extends Fragment {
+	/**
+	 * Serial Version UID
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @param id
 	 * @param markupId
 	 * @param markupProvider
 	 */
-	public ActorsFragment(String id,
-		MarkupContainer markupProvider, IModel<List<Actor>> model) {
+	public ActorsFragment(String id, MarkupContainer markupProvider,
+		IModel<List<Actor>> model) {
 	    super(id, "actorsListFragment", markupProvider, model);
-	    add(new PropertyListView<Actor>("actorsList", model){
+	    add(new PropertyListView<Actor>("actorsList", model) {
 
 		/**
 		 * Serial Version UID
@@ -191,10 +236,6 @@ public class SelectMoviePage extends AbstractVideoStorePage {
 	    });
 	}
 
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = 1L;
 
     }
 
@@ -205,16 +246,16 @@ public class SelectMoviePage extends AbstractVideoStorePage {
 	 */
 	private static final long serialVersionUID = 1L;
 
-
 	/**
 	 * @param id
 	 * @param markupId
 	 * @param markupProvider
 	 */
-	public LinkFragment(String id, MarkupContainer markupProvider, IModel<Movie> model) {
-	    super(id, "linkFragment", markupProvider , model);
+	public LinkFragment(String id, MarkupContainer markupProvider,
+		IModel<Movie> model) {
+	    super(id, "linkFragment", markupProvider, model);
 	    AjaxLink<Movie> link;
-	    add(link = new AjaxLink<Movie>("order", model){
+	    add(link = new AjaxLink<Movie>("order", model) {
 
 		/**
 		 * Serial Version UID
@@ -223,16 +264,20 @@ public class SelectMoviePage extends AbstractVideoStorePage {
 
 		@Override
 		public void onClick(AjaxRequestTarget target) {
-		    VideoSession.get().getSelectedMovies().add(getModelObject());
+		    VideoSession.get().getSelectedMovies()
+			    .add(getModelObject());
 		    target.addComponent(this);
 		}
 
-		/* (non-Javadoc)
+		/*
+		 * (non-Javadoc)
+		 *
 		 * @see org.apache.wicket.Component#isVisible()
 		 */
 		@Override
 		public boolean isVisible() {
-		    Set<Movie> selectedMovies = VideoSession.get().getSelectedMovies();
+		    Set<Movie> selectedMovies = VideoSession.get()
+			    .getSelectedMovies();
 		    return !selectedMovies.contains(getModelObject());
 		}
 	    });

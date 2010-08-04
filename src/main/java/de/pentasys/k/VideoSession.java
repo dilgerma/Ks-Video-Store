@@ -25,13 +25,12 @@ public class VideoSession extends WebSession{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public VideoSession(Request request) {
-		super(request);
-	}
-
 	private Customer customer;
 	private Set<Movie> selectedMovies = new HashSet<Movie>();
 
+	public VideoSession(Request request) {
+		super(request);
+	}
 
 	public Customer getCustomer() {
 		return customer;

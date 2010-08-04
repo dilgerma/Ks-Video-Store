@@ -14,11 +14,11 @@ public class SubmitOrderFailedException extends Exception {
      */
     private static final long serialVersionUID = 1L;
 
-    public SubmitOrderFailedException(String message, Throwable t){
+    public SubmitOrderFailedException(String message, Throwable t) {
 	super(message, t);
     }
 
-    public SubmitOrderFailedException(String message){
+    public SubmitOrderFailedException(String message) {
 	super(message);
     }
 }

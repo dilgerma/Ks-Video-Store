@@ -11,38 +11,36 @@ import de.pentasys.k.pages.HomePage;
 /***
  * Application.
  *
- * @author <a href="mailto:martin.dilger@pentasys.de">martin dilger</a>
- * created on 24.06.2010
+ * @author <a href="mailto:martin.dilger@pentasys.de">martin dilger</a> created
+ *         on 24.06.2010
  */
-public class VideoStoreApplication extends WebApplication
-{
+public class VideoStoreApplication extends WebApplication {
     /**
      * Constructor
      */
-	public VideoStoreApplication()
-	{
-	}
+    public VideoStoreApplication() {
+    }
 
-	/**
-	 * @see org.apache.wicket.Application#getHomePage()
-	 */
-	public Class<HomePage> getHomePage()
-	{
-		return HomePage.class;
-	}
+    /**
+     * @see org.apache.wicket.Application#getHomePage()
+     */
+    public Class<HomePage> getHomePage() {
+	return HomePage.class;
+    }
 
+    @Override
+    public Session newSession(Request request, Response response) {
+	return new VideoSession(request);
+    }
 
-	@Override
-	public Session newSession(Request request, Response response) {
-		return new VideoSession(request);
-	}
-
-	/* (non-Javadoc)
-	 * @see org.apache.wicket.protocol.http.WebApplication#init()
-	 */
-	@Override
-	protected void init() {
-	    super.init();
-	    addComponentInstantiationListener(new SpringComponentInjector(this));
-	}
+    /*
+     * (non-Javadoc)
+     *
+     * @see org.apache.wicket.protocol.http.WebApplication#init()
+     */
+    @Override
+    protected void init() {
+	super.init();
+	addComponentInstantiationListener(new SpringComponentInjector(this));
+    }
 }

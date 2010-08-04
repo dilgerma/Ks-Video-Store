@@ -8,5 +8,5 @@ package de.pentasys.k.pages;
  * @since 05.08.2010
  */
 public class ConfirmationPage extends AbstractVideoStorePage {
-    //nothing do do here
+    // nothing to do here
 }

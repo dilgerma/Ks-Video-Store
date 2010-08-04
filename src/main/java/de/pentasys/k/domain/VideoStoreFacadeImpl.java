@@ -39,11 +39,13 @@ public class VideoStoreFacadeImpl implements VideoStoreFacade {
      * de.pentasys.k.domain.VideoStoreFacade#submitOrder(de.pentasys.k.domain
      * .Customer, java.util.List)
      */
-    public void submitOrder(Customer customer, Set<Movie> movies) throws SubmitOrderFailedException {
-	if(movies.size() == 0)
-	    throw new SubmitOrderFailedException("Filmliste darf nicht leer sein");
+    public void submitOrder(Customer customer, Set<Movie> movies)
+	    throws SubmitOrderFailedException {
+	if (movies.size() == 0)
+	    throw new SubmitOrderFailedException(
+		    "Filmliste darf nicht leer sein");
 
-	//do some backend access.
+	// do some backend access.
 
     }
 
@@ -53,7 +55,7 @@ public class VideoStoreFacadeImpl implements VideoStoreFacade {
      * @see de.pentasys.k.domain.VideoStoreFacade#getDailyOffers()
      */
     public Movie getDailyOffer() {
-	return movieList.get(random.nextInt() * (movieList.size()-1));
+	return movieList.get(random.nextInt() * (movieList.size() - 1));
     }
 
     private void initMockData() {
@@ -88,7 +90,6 @@ public class VideoStoreFacadeImpl implements VideoStoreFacade {
 	movieList.add(dieHard);
 	movieList.add(speed);
 	movieList.add(koq);
-
 
     }
 

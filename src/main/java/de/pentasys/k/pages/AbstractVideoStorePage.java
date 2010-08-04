@@ -41,13 +41,16 @@ public abstract class AbstractVideoStorePage extends WebPage {
 	     */
 	    @Override
 	    protected void populateItem(ListItem<MenuEntry> item) {
-		BookmarkablePageLink<MenuEntry> entryLink = new BookmarkablePageLink<MenuEntry>("entry",item.getModelObject().getTargetPage());
+		BookmarkablePageLink<MenuEntry> entryLink = new BookmarkablePageLink<MenuEntry>(
+			"entry", item.getModelObject().getTargetPage());
 		entryLink.add(new Label("title", item.getModelObject()
 			.getDisplayName()));
 		item.add(entryLink);
 	    }
 
-	    /* (non-Javadoc)
+	    /*
+	     * (non-Javadoc)
+	     *
 	     * @see org.apache.wicket.Component#isVisible()
 	     */
 	    @Override
@@ -76,9 +79,9 @@ public abstract class AbstractVideoStorePage extends WebPage {
 	return entries;
     }
 
-    protected void initHeaderContributions(){
-	add(CSSPackageResource.getHeaderContribution(AbstractVideoStorePage.class, "style.css"));
+    protected void initHeaderContributions() {
+	add(CSSPackageResource.getHeaderContribution(
+		AbstractVideoStorePage.class, "style.css"));
     }
-
 
 }
