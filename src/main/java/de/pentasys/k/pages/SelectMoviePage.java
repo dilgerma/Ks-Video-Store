@@ -51,7 +51,7 @@ public class SelectMoviePage extends AbstractVideoStorePage {
 
 	DataTable<Movie> dataTable = new DataTable<Movie>("movieTable",createMovieColumnList(),movieDataProvider,5);
 	dataTable.setTableBodyCss("movieTable");
-	dataTable.addBottomToolbar(new HeadersToolbar(dataTable, movieDataProvider));
+	dataTable.addTopToolbar(new HeadersToolbar(dataTable, movieDataProvider));
 	form.add(dataTable);
 	add(form);
     }
